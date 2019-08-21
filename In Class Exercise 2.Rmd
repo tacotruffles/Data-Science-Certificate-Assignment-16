@@ -1,0 +1,40 @@
+---
+title: "In Class Exercise 2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+```
+
+```{r}
+library('caret')
+library('tidyverse')
+dat_country = gapminder::gapminder %>% as_tibble()
+```
+
+
+### The gapminder dataset
+```{r}
+dat_country
+```
+
+#### Clean the data
+```{r}
+dat_country_clean = dat_country %>% ...
+```
+
+
+#### Tell me something interesting!
+```{r}
+dat_country_clean %>% ...
+```
+
+
+#### Build a regression... but do it per continent rather than per country!
+```{r}
+dat_country_clean %>% ...
+```
+Explain your regression, how you made decisions, and whether or not it makes sense
+
+

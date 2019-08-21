@@ -1,0 +1,46 @@
+---
+title: "In Class Exercise 1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+```
+
+```{r}
+library('caret')
+library('tidyverse')
+data("iris")
+dat_iris = iris %>% as_tibble()
+```
+
+
+### The iris dataset
+```{r}
+dat_iris
+```
+
+#### Most important plot
+```{r}
+dat_iris %>%
+  ggplot() #example
+```
+Caption: why this is the most important plot
+
+
+
+#### Second most important plot
+```{r}
+dat_iris %>%
+  ggplot() #example
+```
+Caption: why this is the second most important plot
+
+
+#### Build a classifier for the Species
+```{r}
+dat_iris %>% ...
+```
+Caption: explain why you picked this classifier and how well/poorly it performed.
+
+
