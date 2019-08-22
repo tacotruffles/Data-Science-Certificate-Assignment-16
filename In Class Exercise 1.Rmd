@@ -20,6 +20,14 @@ dat_iris = iris %>% as_tibble()
 dat_iris
 ```
 
+
+### Show a tibble with only data that is +/- 2 SD from the mean of each column.
+```{r}
+dat_iris %>%
+```
+
+
+
 #### Most important plot
 ```{r}
 dat_iris %>%
