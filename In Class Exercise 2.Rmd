@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE)
 ```{r}
 library('caret')
 library('tidyverse')
+# install.packages('gapminder')
 dat_country = gapminder::gapminder_unfiltered %>% as_tibble()
 ```
 
