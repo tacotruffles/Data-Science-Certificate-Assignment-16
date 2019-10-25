@@ -20,10 +20,17 @@ dat_iris = iris %>% as_tibble()
 dat_iris
 ```
 
+```{r}
+dat_iris %>%
+  group_by(Species) %>%
+  count()
+```
+
 
 ### Show a tibble with only data that is +/- 2 SD from the mean of each column.
 ```{r}
-dat_iris %>%
+dat_iris %>% 
+  mutate_if(is.numeric, sd)
 ```
 
 
@@ -31,7 +38,8 @@ dat_iris %>%
 #### Most important plot
 ```{r}
 dat_iris %>%
-  ggplot() #example
+  ggplot(aes(x=Species)) + #example
+  geom_bar()
 ```
 Caption: why this is the most important plot
 
@@ -41,6 +49,8 @@ Caption: why this is the most important plot
 ```{r}
 dat_iris %>%
   ggplot() #example
+
+plot(dat_iris)
 ```
 Caption: why this is the second most important plot
 

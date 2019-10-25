@@ -22,20 +22,64 @@ dat_country
 
 #### Clean the data
 ```{r}
-dat_country_clean = dat_country %>% ...
+colSums(is.na(dat_country)) # no NAs
+
+dat_country_clean = dat_country
+  
+dat_country_clean
 ```
 
 
 #### Tell me something interesting!
 ```{r}
-dat_country_clean %>% ...
+dat_country_clean %>% 
+  ggplot(aes(x=continent)) +
+  geom_bar()
+
+dat_country_clean %>% 
+  ggplot(aes(x=continent, y=lifeExp)) +
+  geom_boxplot()
+
+# Europe has the highest life expectancy, with the Americas and Oceana at close 2nd
 ```
 
 
 #### Build a regression... but do it per continent rather than per country!
 ```{r}
-dat_country_clean %>% ...
+# Train/Test Split
+dat_country_clean = dat_country_clean %>% mutate(id = row_number())
+
+dat_train = dat_country_clean %>% 
+  sample_frac(.7)
+
+dat_test = dat_country_clean %>%
+  anti_join(dat_train, by = 'id') %>%
+  select(-id)
+
+dat_train = dat_train %>% select(-id)
+
+train_control = trainControl(method='cv', number=10)
+
+model_lm = train(
+  # dat_train_up %>% select(-Class), different way to pass in x,y
+  # dat_train_up$Class,
+  lifeExp ~ pop + year + gdpPercap,
+  data = dat_train,
+  trControl = train_control,
+  method = 'lm'
+)
+
+summary(model_lm)
 ```
+
+Population doesn't matter, so run it again
+```{r}
+
+```
+
 Explain your regression, how you made decisions, and whether or not it makes sense
+
+
+CHECK OUT R BOOK FOR nesting techinque.
 
 
